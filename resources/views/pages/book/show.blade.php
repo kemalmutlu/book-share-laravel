@@ -16,7 +16,9 @@
                     <div class="card-body">
                       <h5 class="card-title">Author: {{ $book->author }}</h5>
                       <p class="card-text h5">Page Count: {{ $book->page_count }}</p>
+                    @if(Auth::user()->id == $book->user->id)
                         <a class="btn btn-info" href="{{ route('books.edit', $book->id) }}">Edit</a>
+                    @endif
                     </div>
                     <div class="card-footer text-muted">
                       Created At {{ $book->created_at}}
@@ -26,4 +28,9 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Comments -->
+    @include('partial.comments.list')
+    @include('partial.comments.form')
 @endsection

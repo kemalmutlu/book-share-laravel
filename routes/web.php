@@ -18,6 +18,9 @@ Route::get('/', 'WelcomeController@index');
 Auth::routes();
 
 Route::resource('/books', 'BookController');
+
 Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+
+Route::post('books/{book_id}/comments', 'CommentController@store')->name('comments.store');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

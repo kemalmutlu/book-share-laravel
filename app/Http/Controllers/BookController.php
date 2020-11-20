@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Repositories\BookRepository;
 use App\Models\Book;
+use App\Models\Comment;
+use App\Repositories\CommentRepository;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
     protected $model;
 
-    public function __construct(Book $book)
+    public function __construct(Book $book, Comment $comment)
     {
         // set the model
        $this->model = new BookRepository($book);
+       // set the another model
+       $this->comment_model = new CommentRepository($comment);
     }
 
     /**
@@ -58,7 +62,9 @@ class BookController extends Controller
     public function show($id)
     {
         $book = $this->model->show($id);
-        return view('pages.book.show', compact('book'));
+        $comments = $this->comment_model->findBookComments($id);
+
+        return view('pages.book.show', compact('book', 'comments'));
     }
 
     /**
