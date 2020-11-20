@@ -14,6 +14,8 @@ class Dashboard extends Component
      *
      * @return void
      */
+    protected $model;
+
     public function __construct(Book $book)
     {
         $this->model = new BookRepository($book);

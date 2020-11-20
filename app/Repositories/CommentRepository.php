@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Book;
+use Auth;
 
 class CommentRepository extends Repository
 {
@@ -16,4 +17,21 @@ class CommentRepository extends Repository
     {
       return $this->model->where('book_id', $book_id)->get();
     }
+
+    public function getBooksComments()
+    {
+        return $this->model->whereHas('book', function ($query){
+            return $query->where('user_id', Auth::user()->id);
+        })
+        ->where('user_id', '!=', Auth::user()->id)->get();
+    }
+
+    public function getUserComments(){
+        return $this->model->whereHas('book', function ($query){
+            return $query->where('user_id', '!=', Auth::user()->id);
+        })
+        ->where('user_id', Auth::user()->id)->get();
+    }
+
+
 }

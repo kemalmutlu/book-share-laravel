@@ -31,6 +31,6 @@
 
 
     <!-- Comments -->
-    @include('partial.comments.list')
-    @include('partial.comments.form')
+    @include('pages.comments.list')
+    @include('pages.comments.form')
 @endsection

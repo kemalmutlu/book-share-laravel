@@ -23,4 +23,8 @@ Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::post('books/{book_id}/comments', 'CommentController@store')->name('comments.store');
 
+Route::get('comments/{id}', 'CommentController@edit')->name('comments.edit');
+Route::put('comments/{id}', 'CommentController@update')->name('comments.update');
+Route::delete('comments/{id}', 'CommentController@destroy')->name('comments.destroy');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
