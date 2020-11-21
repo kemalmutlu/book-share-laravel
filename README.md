@@ -1,4 +1,6 @@
-## Quick installion
+# Laravel - Book Share Platform
+
+## Quick Installation
 
 ``` 
 git clone https://github.com/kemalmutlu/book_share_platform.git
