@@ -30,12 +30,14 @@ class CommentController extends Controller
 
     public function edit($comment_id)
     {
+        $this->authorize('checkUserOfComment', $this->model->show($comment_id));
         $comment = $this->model->show($comment_id);
         return view('pages.comments.edit', compact('comment'));
     }
 
     public function destroy($comment_id)
     {
+        $this->authorize('checkUserOfComment', $this->model->show($comment_id));
         $this->model->delete($comment_id);
         return redirect()->route('dashboard')->with('message', 'Comment successfull deleted');
     }

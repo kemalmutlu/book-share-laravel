@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use Auth;
+
 use App\Repositories\BookRepository;
 use App\Models\Book;
 use App\Models\Comment;
@@ -75,6 +75,7 @@ class BookController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('authorizedUser', $this->model->show($id));
         $book = $this->model->show($id);
         return view('pages.book.edit', compact('book'));
     }
@@ -88,7 +89,9 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('authorizedUser', $this->model->show($id));
         $this->model->update($request->only($this->model->getModel()->fillable), $id);
+
         return redirect()->route('dashboard');
     }
 
@@ -100,12 +103,9 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('authorizedUser', $this->model->show($id));
         $this->model->delete($id);
-        return redirect()->route('dashboard')->with('message', 'Your book is successfull deleted.');
-    }
 
-    public function booksOfUser($username)
-    {
-        $user_books = $this->model->find_user_books($username);
+        return redirect()->route('dashboard')->with('message', 'Your book is successfull deleted.');
     }
 }
