@@ -39,7 +39,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">List of books</a>
+                                <a class="nav-link" href="{{ route('users.list') }}">Users</a>
                             </li>
                         @endif
                     </ul>
