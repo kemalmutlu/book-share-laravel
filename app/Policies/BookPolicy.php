@@ -23,5 +23,16 @@ class BookPolicy
         return $user->id == $book->user_id;
     }
 
+     /**
+     * Determine whether the user can show the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Book  $book
+     * @return mixed
+     */
+    public function show(User $user, Book $book)
+    {
+        return $user->id == $book->user_id || $book->status == 1;
+    }
 
 }

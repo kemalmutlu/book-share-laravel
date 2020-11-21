@@ -15,7 +15,9 @@ class CommentRepository extends Repository
 
     public function findBookComments($book_id)
     {
-      return $this->model->where('book_id', $book_id)->get();
+      return $this->model->where('book_id', $book_id)
+                            ->where('status', 1)
+                            ->get();
     }
 
     public function getBooksComments()

@@ -52,6 +52,8 @@ class BookController extends Controller
     public function show($id)
     {
         $book = $this->model->show($id);
+        $this->authorize('show', $book);
+
         $comments = $this->comment_model->findBookComments($id);
 
         return view('pages.book.show', compact('book', 'comments'));
