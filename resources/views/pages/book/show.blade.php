@@ -21,7 +21,7 @@
                     @endif
                     </div>
                     <div class="card-footer text-muted">
-                      Created At {{ $book->created_at}}
+                      Created at: {{ Helper::verboseDate($book->created_at)}}
                     </div>
                   </div>
                 </div>

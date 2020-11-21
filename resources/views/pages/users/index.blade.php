@@ -12,7 +12,7 @@
                             <footer class="blockquote-footer">Registered at
                                 <cite title="Source Title">{{ $user->created_at }}</cite>
                             </footer>
-                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary mt-3">Go Profile</a>
+                            <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary mt-3">Go to profile</a>
                         </div>
                     </div>
                 </div>

@@ -28,7 +28,7 @@
                             <div class="card-body">
                             <footer class="blockquote-footer">Written by <cite title="Source Title">{{ $book->author }}</cite></footer>
                             <footer class="blockquote-footer">
-                                {{ $book->created_at }}
+                                Created at {{ Helper::verboseDate($book->created_at) }}
                             </footer>
                                 <a class="btn btn-primary btn-sm float-right mt-1" href="{{ route('books.show', $book->id) }}">Show</a>
                             </div>
