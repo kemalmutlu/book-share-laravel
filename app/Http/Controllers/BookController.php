@@ -38,8 +38,9 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->model->save_with_auth_user($request->only($this->model->getModel()->fillable));
-        return redirect()->route('books.index');
+        return redirect()->route('dashboard')->with('message', 'The book has been successfully created.');
     }
 
     /**
@@ -81,7 +82,7 @@ class BookController extends Controller
         $this->authorize('authorizedUser', $this->model->show($id));
         $this->model->update($request->only($this->model->getModel()->fillable), $id);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('message', 'The book has been successfully updated.');;
     }
 
     /**
@@ -95,6 +96,6 @@ class BookController extends Controller
         $this->authorize('authorizedUser', $this->model->show($id));
         $this->model->delete($id);
 
-        return redirect()->route('dashboard')->with('message', 'Your book is successfull deleted.');
+        return redirect()->route('dashboard')->with('message', 'The book has been successfully deleted.');
     }
 }

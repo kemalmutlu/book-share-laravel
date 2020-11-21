@@ -17,8 +17,8 @@
                     </div>
 
                     <div class="form-group form-check">
-                        {{ Form::checkbox('status', 1, true, array('class' => 'form-check-input')) }}
                         {{ Form::hidden('status', 0) }}
+                        {{ Form::checkbox('status', 1, true, array('class' => 'form-check-input')) }}
                         {{ Form::label('status', 'Status', array('class' => 'form-check-label')) }}
                     </div>
 
