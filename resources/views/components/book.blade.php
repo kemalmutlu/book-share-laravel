@@ -4,8 +4,8 @@
             <div class="col-6 col-sm-6 col-md-3 mb-3">
                 <div class="card" style="width: 100%;">
                     <div class="card-header">
-                    <a class="badge badge-pill badge-success" href="/users/6">{{ $book->user->name }}</a>
-                    <span class="badge badge-pill badge-info">Page Count: {{ $book->page_count }}</span>
+                    <a class="badge badge-pill badge-success" href="#">{{ $book->user->name }}</a>
+                    <span class="badge badge-pill badge-info text-white">Page Count: {{ $book->page_count }}</span>
                     </div>
                     <div class="card-body">
                     <h5 class="card-title">{{ $book->title }}</h5>

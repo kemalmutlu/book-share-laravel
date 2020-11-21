@@ -17,7 +17,9 @@ Route::get('/', 'WelcomeController@index');
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('/books', 'BookController');
+    Route::resource('/books', 'BookController')->except([
+        'index',
+    ]);;
 
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
