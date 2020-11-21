@@ -33,6 +33,6 @@ class Dashboard extends Component
 
     public function books()
     {
-        return $this->model->find_user_books(Auth::user()->name);
+        return $this->model->findUserBooks(auth()->user()->name);
     }
 }

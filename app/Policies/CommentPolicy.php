@@ -11,15 +11,26 @@ class CommentPolicy
     use HandlesAuthorization;
 
      /**
-     * Determine whether the user can Update, Delete the model.
+     * Determine whether the user can edit,destroy the model.
      *
      * @param  \App\Models\User  $user
      * @param  \App\Models\Comment  $comment
      * @return mixed
      */
-    public function checkUserOfComment(User $user, Comment $comment)
+    public function authUser(User $user, Comment $comment)
     {
         return $user->id == $comment->user_id || $user->id == $comment->book->user->id;
     }
 
+    /**
+     * Determine whether the user can update the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Comment  $model
+     * @return mixed
+     */
+    public function update(User $user, Comment $comment)
+    {
+        return $user->id == $comment->book->user->id;
+    }
 }

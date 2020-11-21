@@ -31,6 +31,6 @@ class Book extends Component
 
     public function books()
     {
-        return $this->model->all();
+        return $this->model->getPublicBooks();
     }
 }

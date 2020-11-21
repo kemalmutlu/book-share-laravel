@@ -12,7 +12,7 @@ class BookRepository extends Repository
         return Auth::user()->books()->create($data);
     }
 
-    public function find_user_books($user)
+    public function findUserBooks($user)
     {
         $user = User::where('name', $user)
                         ->orWhere('id', $user)
@@ -20,5 +20,10 @@ class BookRepository extends Repository
                         ->first();
 
         return $this->model->where('user_id', $user)->get();
+    }
+
+    public function getPublicBooks()
+    {
+        return $this->model->where('status', true)->get();
     }
 }

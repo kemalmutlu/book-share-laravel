@@ -12,7 +12,7 @@
                 <p class="card-text">User: <strong>{{ $comment->user->name }}</strong> </p>
 
                 <div class="d-flex">
-                    @if($comment->book->user->id == Auth::user()->id)
+                    @if($comment->book->user->id == Auth::user()->id && $comment->status != 1)
                     {{ Form::open(array('route' => ['comments.update', $comment->id], 'method' => 'put')) }}
                         {{ Form::token() }}
                         <button tpye="submit" class="btn btn-primary">Approve</button>

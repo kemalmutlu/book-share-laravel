@@ -16,14 +16,14 @@ Route::get('/', 'WelcomeController@index');
 
 Auth::routes();
 
-Route::resource('/books', 'BookController');
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('/books', 'BookController');
 
-Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
-Route::post('books/{book_id}/comments', 'CommentController@store')->name('comments.store');
+    Route::post('books/{book_id}/comments', 'CommentController@store')->name('comments.store');
 
-Route::get('comments/{id}', 'CommentController@edit')->name('comments.edit');
-Route::put('comments/{id}', 'CommentController@update')->name('comments.update');
-Route::delete('comments/{id}', 'CommentController@destroy')->name('comments.destroy');
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('comments/{id}', 'CommentController@edit')->name('comments.edit');
+    Route::put('comments/{id}', 'CommentController@update')->name('comments.update');
+    Route::delete('comments/{id}', 'CommentController@destroy')->name('comments.destroy');
+});
