@@ -21,17 +21,16 @@ class CommentRepository extends Repository
     public function getBooksComments()
     {
         return $this->model->whereHas('book', function ($query){
-            return $query->where('user_id', Auth::user()->id);
+            return $query->where('user_id', auth()->user()->id);
         })
-        ->where('user_id', '!=', Auth::user()->id)->get();
+        ->where('user_id', '!=', auth()->user()->id)->get();
     }
 
     public function getUserComments(){
         return $this->model->whereHas('book', function ($query){
-            return $query->where('user_id', '!=', Auth::user()->id);
+            return $query->where('user_id', '!=', auth()->user()->id);
         })
-        ->where('user_id', Auth::user()->id)->get();
+        ->where('user_id', auth()->user()->id)->get();
     }
-
 
 }

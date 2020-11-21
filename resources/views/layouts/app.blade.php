@@ -91,7 +91,6 @@
             </div>
         </nav>
 
-
         @include('partial.alert')
 
         <main class="py-4">
