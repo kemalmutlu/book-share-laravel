@@ -1,11 +1,11 @@
-# Laravel - Book Share Platform
+# Laravel - Book Share
 
 ## Quick Installation
 
 ``` 
 git clone https://github.com/kemalmutlu/book-share-laravel.git
 
-cd book_share_platform
+cd book-share-laravel
 
 composer install
 
