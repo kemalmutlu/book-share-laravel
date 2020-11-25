@@ -3,7 +3,11 @@
 @section('content')
     <div class="container">
         <div class="row jumbotron">
+            <div class="col-12 mb-3">
+                <h1>Edit Book</h1>
+            </div>
             <div class="col-12">
+                @include('partial.errors')
                 {{ Form::open(array('route' => ['books.update', $book->id], 'method' => 'put')) }}
                     {{ Form::token() }}
                     <div class="form-group">

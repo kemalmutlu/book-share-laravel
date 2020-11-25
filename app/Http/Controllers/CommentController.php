@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 
 use App\Repositories\CommentRepository;
 use App\Models\Comment;
-use Auth;
+use App\Http\Requests\CommentRequest;
 
 
 class CommentController extends Controller
@@ -18,7 +18,7 @@ class CommentController extends Controller
         $this->model = new CommentRepository($comment);
     }
 
-    public function store($book_id, Request $request)
+    public function store($book_id, CommentRequest $request)
     {
         $this->model->createComment($book_id,
                     $request->merge(['user_id' => auth()->user()->id])

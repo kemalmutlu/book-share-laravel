@@ -1,5 +1,8 @@
 <div class="container">
     <div class="row">
+        <div class="col-12">
+            @include('partial.errors')
+        </div>
         <div class="col-12 border">
             {{ Form::open(array('route' => ['comments.store', $book->id], 'method' => 'post')) }}
                 {{ Form::token() }}

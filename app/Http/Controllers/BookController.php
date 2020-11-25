@@ -6,7 +6,7 @@ use App\Repositories\BookRepository;
 use App\Models\Book;
 use App\Models\Comment;
 use App\Repositories\CommentRepository;
-use Illuminate\Http\Request;
+use App\Http\Requests\BookRequest;
 
 class BookController extends Controller
 {
@@ -36,7 +36,7 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
 
         $this->model->save_with_auth_user($request->only($this->model->getModel()->fillable));
@@ -79,7 +79,7 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BookRequest $request, $id)
     {
         $this->authorize('authorizedUser', $this->model->show($id));
         $this->model->update($request->only($this->model->getModel()->fillable), $id);
