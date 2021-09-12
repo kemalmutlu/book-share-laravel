@@ -8,7 +8,7 @@
             </div>
             <div class="col-12">
                 @include('partial.errors')
-                {{ Form::open(array('route' => 'books.store', 'method' => 'post')) }}
+                {{ Form::open(array('route' => 'books.create', 'method' => 'post')) }}
                     {{ Form::token() }}
                     <div class="form-group">
                         {{ Form::label('title', 'Book Title') }}
